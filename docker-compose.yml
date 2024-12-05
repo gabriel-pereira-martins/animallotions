@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+
+    redis:
+        image: 'redis:alpine'
+
+    mariadb:
+        image: 'mariadb:10.6'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=animalLotions
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=root
+        ports:
+            - '8002:3306'
+
